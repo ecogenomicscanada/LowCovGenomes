@@ -21,3 +21,4 @@ sleep 5
 
 #thresholds may need to be adjusted for various data - here using moderate thresholds of base quality and mapping quality = 20
 #note this one line runs on all of the bams at once ## therefore there is no "Run" script for this step to loop over bam files
+#this script produces several angsd files for analyses: arg, bcf, beagle, geno, mafs
