@@ -1,0 +1,27 @@
+#install pcangsd in a virtual environment on CC
+
+#load python and scipy
+module load python
+module load scipy-stack
+
+#load environment
+virtualenv --no-download ENV
+source ENV/bin/activate
+
+#upgrade pip and install numpy
+pip install --no-index --upgrade pip
+pip install numpy --no-index
+
+#git clone desired package
+git clone https://github.com/Rosemeis/pcangsd.git
+
+#follow installation instructions from package git
+
+#when done
+deactivate
+
+#when you want to run the program
+source ENV/bin/activate
+
+#check if you can open program
+pcangsd -h
