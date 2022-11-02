@@ -10,6 +10,7 @@
 module load python
 module load scipy-stack
 source ENV/bin/activate
-pcangsd -b /path/FILENAME.angsd.beagle.gz -e 2 -t 32 -o /path/pcangsd_out/FILENAME.pcangsd 
+pcangsd -b /path/FILENAME.angsd.beagle.gz -t 32 -o /path/pcangsd_out/FILENAME.pcangsd 
 
 #add in the path and file name ## make sure output directory exists 
+#if you want to test a known/suspected value of K, add -e 2 (for K=3) ## or -e 9 (for K=10)
