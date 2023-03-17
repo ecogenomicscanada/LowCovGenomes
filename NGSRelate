@@ -1,0 +1,32 @@
+#first run PCA and NGSadmix to determine population clusters
+#run angsd to group by population
+
+#then extract the frequency column from the allele frequency file and remove the header (to make it in the format NgsRelate needs)
+zcat ONcaribou_MICH_35chr.mafs.gz | cut -f5 |sed 1d >freq
+
+#then run NGSrelate to calculate relatedness
+#use the glf or bcf file
+
+##example with glf
+
+#!/bin/bash
+#SBATCH --account=def-jebowman
+#SBATCH --job-name=ngsRelate_MIC
+#SBATCH --mem 200G
+#SBATCH --time=00-11:59
+#SBATCH --cpus-per-task 8
+#SBATCH --mail-user=kirstensolmundson@trentu.ca
+#SBATCH --mail-type=ALL
+/scratch/kirstens/final_ONlowcov/angsd_data/ngsRelate/ngsRelate -g ONcaribou_MICH_35chr.angsd.glf.gz -z LSbam.list -n 55 -f freq -p 8 -O ./LSRresults/MICH_NgsRelate_test35chr
+
+##example with bcf
+
+#!/bin/bash
+#SBATCH --account=def-jebowman
+#SBATCH --job-name=ngsRelate_MIC_bcf
+#SBATCH --mem 200G
+#SBATCH --time=00-11:59
+#SBATCH --cpus-per-task 8
+#SBATCH --mail-user=kirstensolmundson@trentu.ca
+#SBATCH --mail-type=ALL
+/scratch/kirstens/final_ONlowcov/angsd_data/ngsRelate/ngsRelate -h ONcaribou_MICH_35chr.angsd.bcf -z LSbam.list -n 55 -p 8 -O ./LSRresults/MICH_NgsRelate_35chr_bcf
